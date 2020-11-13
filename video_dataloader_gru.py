@@ -79,23 +79,6 @@ IMG_EXTENSIONS = ('.jpg', '.jpeg', '.png', '.ppm', '.bmp', '.pgm', '.tif', '.tif
 def is_image_file(filename):
     return filename.lower().endswith(IMG_EXTENSIONS)
 
-def make_dataset_youtube_and_300vw(dir):
-    assert os.path.isdir(dir), '%s is not a valid directory' % dir
-
-    videos = []
-
-    dir1 = os.path.join(dir, "300VW_annot_224")
-    dir2 = os.path.join(dir, "youtube_annot_224")
-
-    for ddir in [dir1, dir2]:
-        for sf in sorted(os.listdir(ddir)):
-            single_video_frames = []
-            for fname in sorted(os.listdir(os.path.join(ddir, sf, "crop"))):
-                if is_image_file(fname):
-                    fpath = os.path.join(ddir, sf, "crop", fname)
-                    single_video_frames.append(fpath)
-            videos.append((sf, single_video_frames))
-    return videos
 
 def make_dataset(dir):
     assert os.path.isdir(dir), '%s is not a valid directory' % dir
@@ -104,7 +87,7 @@ def make_dataset(dir):
     for sf in sorted(os.listdir(dir)):
         single_video_frames = []
         for fname in sorted(os.listdir(os.path.join(dir, sf))):
-            if is_image_file(fname) and fname.startswith("im_"):
+            if is_image_file(fname):
                 fpath = os.path.join(dir, sf, fname)
                 single_video_frames.append(fpath)
         videos.append((sf, single_video_frames))
@@ -112,7 +95,7 @@ def make_dataset(dir):
 
 
 def make_dataset_makeall(dir, view_num, load_type=0):
-    videos = make_dataset_youtube_and_300vw(dir)
+    videos = make_dataset(dir)
     multi_view_sets = []
 
     for vname, frames in videos:
@@ -160,7 +143,7 @@ def make_dataset_makepart(dir, view_num, load_type=0):
 
 def make_dataset_makepart_balance(dir, view_num, min_views = 60, load_type=0):
     assert view_num < min_views
-    videos = make_dataset_youtube_and_300vw(dir)
+    videos = make_dataset(dir)
     multi_view_sets = []
 
 
@@ -179,7 +162,7 @@ def make_dataset_makepart_balance(dir, view_num, min_views = 60, load_type=0):
 
 def make_dataset_makepart_balance_sample(dir, view_num, min_views = 150, sample_step=8, load_type=0):
     assert view_num < min_views
-    videos = make_dataset_youtube_and_300vw(dir)
+    videos = make_dataset(dir)
     multi_view_sets = []
 
 

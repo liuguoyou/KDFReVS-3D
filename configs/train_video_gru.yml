@@ -29,8 +29,8 @@ beta2 : 0.1
 num_workers: 1
 image_size: 64
 load_gt_depth: false
-train_data_dir: /datasets/video_3d_face_annot
-val_data_dir: /datasets/SingleFaceImageSets/crop_align/Stars
+train_data_dir: /datasets/train
+val_data_dir: /datasets/val
 num_views: 15
 max_num_views: 16
 min_num_views: 15
