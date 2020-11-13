@@ -31,15 +31,13 @@ Please remember to cite the corresponding papers if you use these datasets.
 
 All preprocessing tools have been provided in [https://github.com/lstcutong/video-face-3d](https://github.com/lstcutong/video-face-3d), please refer to it for more details.
 
-For training, after preprocessing 300VW and YTF datasets, put them in `./datasets/train`,  one video in one folder, we provide an example for your reference. You can add more videos in it if you like.
+For training, after preprocessing 300VW and YTF datasets, put them in `./datasets/train`,  one video in one folder, we provide an example for your reference. You can add more videos in it if you like. Note that we need some single face images for evaluation during training, please put any images you like in `./datasets/val`.
 
-For testing, please put your images in `./datasets/test`
-
-The `./datasets/val` folder contains images that are evaluated during training, you can put in some single face images.
+For testing, we have provided some images that used in paper in `./datasets/test`, you can directly run our code to verify the performance that demonstrated in our paper. You can also put some other images and test your own.
 
 ### Pretrained Models
 
-Download pretrained models from [models.zip]() and extract them into `./models`
+Download pretrained models from [models.zip](https://pan.baidu.com/s/1axOuk5K-rgSNLAvj3JkQGw)  (password: fvq1) and extract them into `./models`
 
 ### Training and Testing
 

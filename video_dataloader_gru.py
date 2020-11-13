@@ -257,7 +257,7 @@ class VideoDataSets(torch.utils.data.Dataset):
         return self.size
 
     def name(self):
-        return 'ImageDataset'
+        return 'VideoDataset'
 
 
 
