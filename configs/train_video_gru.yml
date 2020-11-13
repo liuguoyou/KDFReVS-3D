@@ -1,0 +1,54 @@
+## trainer
+run_train: true
+num_epochs: 100
+batch_size: 4
+checkpoint_dir: results/distill_15
+save_checkpoint_freq: 1
+keep_num_checkpoint: 50
+resume: true
+use_logger: true
+log_freq: 500
+perceptual_loss : True
+geometry_loss : False
+distill_loss : True
+identity_loss : False
+use_one_albedo : True
+distill_loss_type : MSE
+detach_distill_teacher_grad : False
+
+use_neutral_loss_pixel : True
+use_neutral_loss_percep : True
+neutral_loss_weight : 1
+
+forward_type: rnn
+fusion_type: mean
+
+beta1 : 1
+beta2 : 0.1
+## dataloader
+num_workers: 1
+image_size: 64
+load_gt_depth: false
+train_data_dir: /datasets/video_3d_face_annot
+val_data_dir: /datasets/SingleFaceImageSets/crop_align/Stars
+num_views: 15
+max_num_views: 16
+min_num_views: 15
+load_type: 0
+
+## model
+model_name: kdfrevs3d_gru
+min_depth: 0.9
+max_depth: 1.1
+xyz_rotation_range: 60  # (-r,r) in degrees
+xy_translation_range: 0.1  # (-t,t) in 3D
+z_translation_range: 0  # (-t,t) in 3D
+lam_perc: 1
+lam_flip: 0.5
+lr: 0.0001
+LoR_K : 64
+
+## renderer
+rot_center_depth: 1.0
+fov: 10  # in degrees
+tex_cube_size: 2
